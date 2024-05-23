@@ -1,0 +1,12 @@
+C:\Users\Gabriel\Documents\appdev\BackEnd-Arboviroses\arbovirose.Domain\bin\Debug\net8.0\arbovirose.Domain.deps.json
+C:\Users\Gabriel\Documents\appdev\BackEnd-Arboviroses\arbovirose.Domain\bin\Debug\net8.0\arbovirose.Domain.dll
+C:\Users\Gabriel\Documents\appdev\BackEnd-Arboviroses\arbovirose.Domain\bin\Debug\net8.0\arbovirose.Domain.pdb
+C:\Users\Gabriel\Documents\appdev\BackEnd-Arboviroses\arbovirose.Domain\obj\Debug\net8.0\arbovirose.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Gabriel\Documents\appdev\BackEnd-Arboviroses\arbovirose.Domain\obj\Debug\net8.0\arbovirose.Domain.AssemblyInfoInputs.cache
+C:\Users\Gabriel\Documents\appdev\BackEnd-Arboviroses\arbovirose.Domain\obj\Debug\net8.0\arbovirose.Domain.AssemblyInfo.cs
+C:\Users\Gabriel\Documents\appdev\BackEnd-Arboviroses\arbovirose.Domain\obj\Debug\net8.0\arbovirose.Domain.csproj.CoreCompileInputs.cache
+C:\Users\Gabriel\Documents\appdev\BackEnd-Arboviroses\arbovirose.Domain\obj\Debug\net8.0\arbovirose.Domain.sourcelink.json
+C:\Users\Gabriel\Documents\appdev\BackEnd-Arboviroses\arbovirose.Domain\obj\Debug\net8.0\arbovirose.Domain.dll
+C:\Users\Gabriel\Documents\appdev\BackEnd-Arboviroses\arbovirose.Domain\obj\Debug\net8.0\refint\arbovirose.Domain.dll
+C:\Users\Gabriel\Documents\appdev\BackEnd-Arboviroses\arbovirose.Domain\obj\Debug\net8.0\arbovirose.Domain.pdb
+C:\Users\Gabriel\Documents\appdev\BackEnd-Arboviroses\arbovirose.Domain\obj\Debug\net8.0\ref\arbovirose.Domain.dll

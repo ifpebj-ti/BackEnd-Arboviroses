@@ -1,0 +1,36 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "arbovirose.Application/1.0.0": {
+        "dependencies": {
+          "arbovirose.Domain": "1.0.0"
+        },
+        "runtime": {
+          "arbovirose.Application.dll": {}
+        }
+      },
+      "arbovirose.Domain/1.0.0": {
+        "runtime": {
+          "arbovirose.Domain.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "arbovirose.Application/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "arbovirose.Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
