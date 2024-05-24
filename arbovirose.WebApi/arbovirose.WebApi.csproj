@@ -14,4 +14,10 @@
     <ProjectReference Include="..\arbovirose.Infra\arbovirose.Infra.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Responsemodels\" />
+    <Folder Include="Requestmodels\" />
+    <Folder Include="Validators\" />
+  </ItemGroup>
+
 </Project>
