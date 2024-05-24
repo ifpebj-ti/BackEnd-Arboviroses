@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("arbovirose.WebApi")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5c00220552013e108a9c926353cda21ec3285fb6")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6f6e2ff494099487d7329919cb05ef8ef847e11d")]
 [assembly: System.Reflection.AssemblyProductAttribute("arbovirose.WebApi")]
 [assembly: System.Reflection.AssemblyTitleAttribute("arbovirose.WebApi")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
