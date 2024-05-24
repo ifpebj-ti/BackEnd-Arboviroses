@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\arbovirose.Domain\arbovirose.Domain.csproj" />
+  </ItemGroup>
+
 </Project>
