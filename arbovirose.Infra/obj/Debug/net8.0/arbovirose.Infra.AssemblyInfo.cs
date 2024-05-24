@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("arbovirose.Infra")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6f6e2ff494099487d7329919cb05ef8ef847e11d")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8294fb36514d0483891a97acc891ffee0b925054")]
 [assembly: System.Reflection.AssemblyProductAttribute("arbovirose.Infra")]
 [assembly: System.Reflection.AssemblyTitleAttribute("arbovirose.Infra")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

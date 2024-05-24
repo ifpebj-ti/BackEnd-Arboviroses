@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("arbovirose.Domain")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8294fb36514d0483891a97acc891ffee0b925054")]
 [assembly: System.Reflection.AssemblyProductAttribute("arbovirose.Domain")]
 [assembly: System.Reflection.AssemblyTitleAttribute("arbovirose.Domain")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

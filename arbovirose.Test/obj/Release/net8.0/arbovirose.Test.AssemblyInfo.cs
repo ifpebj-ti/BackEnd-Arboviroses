@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("arbovirose.Test")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5c00220552013e108a9c926353cda21ec3285fb6")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8294fb36514d0483891a97acc891ffee0b925054")]
 [assembly: System.Reflection.AssemblyProductAttribute("arbovirose.Test")]
 [assembly: System.Reflection.AssemblyTitleAttribute("arbovirose.Test")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
