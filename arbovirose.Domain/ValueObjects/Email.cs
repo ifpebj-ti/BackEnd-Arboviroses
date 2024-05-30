@@ -27,4 +27,3 @@ namespace arbovirose.Domain.ValueObjects
         }
     }
 }
-}
