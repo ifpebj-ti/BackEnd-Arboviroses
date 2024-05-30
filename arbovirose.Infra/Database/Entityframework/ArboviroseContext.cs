@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using arbovirose.Domain.Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace arbovirose.Infra.Database.Entityframework
 {
@@ -8,6 +9,7 @@ namespace arbovirose.Infra.Database.Entityframework
         {
 
         }
+        public DbSet<UserEntity> Users { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(ArboviroseContext).Assembly);
