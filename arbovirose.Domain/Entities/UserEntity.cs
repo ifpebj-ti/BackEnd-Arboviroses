@@ -14,7 +14,7 @@ namespace arbovirose.Domain.Entities
             this.Id = Guid.NewGuid();
             this.Name = Name;
             this.Email = Email;
-            this.Password = Password;
+            this.Password = Password ?? Name+"_"+Email;
             this.UniqueCode = new UniqueCode();
         }
         public Guid Id { get; set; }
