@@ -2,11 +2,14 @@ using Microsoft.EntityFrameworkCore;
 using arbovirose.Infra.Database.Entityframework;
 using Microsoft.OpenApi.Models;
 using System.Reflection;
+using arbovirose.Infra.Ioc;
+using FluentValidation;
+using arbovirose.WebApi.Validators.User;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
+builder.Services.AddValidatorsFromAssemblyContaining<CreateUserValidator>();
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -50,6 +53,8 @@ builder.Services.AddSwaggerGen(c =>
         }
     });
 });
+
+UserDependency.Register(builder.Services);
 
 var app = builder.Build();
 
