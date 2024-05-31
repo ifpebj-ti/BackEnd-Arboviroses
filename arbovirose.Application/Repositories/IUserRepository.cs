@@ -10,5 +10,6 @@ namespace arbovirose.Application.Repositories
     public interface IUserRepository
     {
         Task<UserEntity> Create(UserEntity user);
+        Task<UserEntity?> Deactivate(Guid id);
     }
 }

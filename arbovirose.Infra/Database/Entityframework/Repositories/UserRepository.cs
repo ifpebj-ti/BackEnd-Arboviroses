@@ -16,5 +16,16 @@ namespace arbovirose.Infra.Database.Entityframework.Repositories
             await this._context.SaveChangesAsync();
             return user;
         }
+
+        public async Task<UserEntity?> Deactivate(Guid id)
+        {
+            var user = await this._context.Users.FindAsync(id);
+            if (user == null) return null;
+            user.Active = false;
+            await this._context.SaveChangesAsync();
+            return user;
+        }
+
+
     }
 }

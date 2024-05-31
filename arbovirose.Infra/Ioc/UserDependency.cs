@@ -10,6 +10,7 @@ namespace arbovirose.Infra.Ioc
         public static void Register(IServiceCollection services)
         {
             services.AddScoped<CreateUser>();
+            services.AddScoped<DeactivateUser>();
             services.AddScoped<IUserRepository, UserRepository>();
         }
     }

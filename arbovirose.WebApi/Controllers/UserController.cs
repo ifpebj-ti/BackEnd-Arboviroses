@@ -51,5 +51,27 @@ namespace arbovirose.WebApi.Controllers
             }
             
         }
+
+        [HttpDelete("{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public async Task<ActionResult<MessageResponse>> Deactivate([FromRoute] Guid id, [FromServices] DeactivateUser deactivateUser)
+        {
+            try
+            {
+                var user = await deactivateUser.Execute(id);
+
+                this._logger.LogInformation("Usuário desativado com sucesso");
+
+                var response = new MessageResponse("Usuário desativado com sucesso");
+
+                return Ok(response);
+            }
+            catch (Exception ex)
+            {
+                this._logger.LogError(ex.Message);
+                return BadRequest(ex.Message);
+            }
+        }
     }
 }
