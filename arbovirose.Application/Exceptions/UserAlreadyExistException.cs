@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace arbovirose.Application.Exceptions
 {
-    internal class Class1
+    public class UserAlreadyExistException : Exception
     {
+        public UserAlreadyExistException() : base("Usuário já existe")
+        {
+
+        }
     }
 }
