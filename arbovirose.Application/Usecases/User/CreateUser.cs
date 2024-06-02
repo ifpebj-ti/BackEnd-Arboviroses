@@ -17,8 +17,8 @@ namespace arbovirose.Application.Usecases.User
         {
             var newUser = UserEntityFactory.CreateUserEntity(data);
 
-            //var user = await _userRepository.FindByEmail(newUser.Email);
-            //if (user) throw new UserAlreadyExistException();
+            var user = await _userRepository.FindByEmail(newUser.Email);
+            if (user != null) throw new UserAlreadyExistException();
 
             var result = await _userRepository.Create(newUser);
 

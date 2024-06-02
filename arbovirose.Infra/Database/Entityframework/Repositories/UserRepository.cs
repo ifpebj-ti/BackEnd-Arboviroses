@@ -1,5 +1,7 @@
 ﻿using arbovirose.Application.Repositories;
 using arbovirose.Domain.Entities;
+using arbovirose.Domain.ValueObjects;
+using Microsoft.EntityFrameworkCore;
 
 namespace arbovirose.Infra.Database.Entityframework.Repositories
 {
@@ -26,6 +28,10 @@ namespace arbovirose.Infra.Database.Entityframework.Repositories
             return user;
         }
 
-
+        public async Task<UserEntity?> FindByEmail(Email email)
+        {
+            var user = await this._context.Users.Where(u => u.Email == email).FirstOrDefaultAsync();
+            return user;
+        }
     }
 }
