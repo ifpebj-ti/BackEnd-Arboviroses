@@ -1,9 +1,6 @@
 ﻿using arbovirose.Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using arbovirose.Domain.ValueObjects;
+
 
 namespace arbovirose.Application.Repositories
 {
@@ -11,5 +8,6 @@ namespace arbovirose.Application.Repositories
     {
         Task<UserEntity> Create(UserEntity user);
         Task<UserEntity?> Deactivate(Guid id);
+        Task<UserEntity?> FindByEmail(Email email);
     }
 }
