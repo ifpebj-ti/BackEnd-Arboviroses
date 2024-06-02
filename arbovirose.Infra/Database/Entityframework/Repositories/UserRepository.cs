@@ -33,5 +33,11 @@ namespace arbovirose.Infra.Database.Entityframework.Repositories
             var user = await this._context.Users.Where(u => u.Email == email).FirstOrDefaultAsync();
             return user;
         }
+
+        public async Task<UserEntity?> FindById(Guid id)
+        {
+            var user = await this._context.Users.FirstOrDefaultAsync(u => u.Id == id);
+            return user;
+        }
     }
 }

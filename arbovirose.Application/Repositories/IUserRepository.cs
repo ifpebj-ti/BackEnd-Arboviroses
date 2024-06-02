@@ -9,5 +9,6 @@ namespace arbovirose.Application.Repositories
         Task<UserEntity> Create(UserEntity user);
         Task<UserEntity?> Deactivate(Guid id);
         Task<UserEntity?> FindByEmail(Email email);
+        Task<UserEntity?> FindById(Guid id);
     }
 }
