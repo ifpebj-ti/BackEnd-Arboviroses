@@ -8,7 +8,8 @@ namespace arbovirose.Domain.Entities
         public UserEntity (
             string Name,
             Email Email,
-            string Password
+            string Password,
+            Guid ProfileId
         ) 
         {
             this.Id = Guid.NewGuid();
@@ -16,6 +17,7 @@ namespace arbovirose.Domain.Entities
             this.Email = Email;
             this.Password = Password ?? Name+"_"+Email;
             this.UniqueCode = new UniqueCode();
+            this.ProfileId = ProfileId;
         }
         public Guid Id { get; set; }
         public string Name { get; set; } = "";
@@ -23,5 +25,8 @@ namespace arbovirose.Domain.Entities
         public string Password { get; set; } = "";
         public UniqueCode UniqueCode { get; set; } = null!;
         public bool Active { get; set; } = true;
+        public ProfileEntity Profile { get; set; } = null!;
+        public Guid ProfileId { get; set; }
+
     }
 }
