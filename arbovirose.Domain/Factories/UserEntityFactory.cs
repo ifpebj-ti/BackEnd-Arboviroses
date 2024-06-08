@@ -16,7 +16,8 @@ namespace arbovirose.Domain.Factories
             return new UserEntity(
                 data.Name,
                 new Email(data.Email),
-                data.Password
+                data.Password,
+                data.ProfileId
             );
         }
     }
