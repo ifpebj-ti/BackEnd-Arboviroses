@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using arbovirose.Infra.Database.Entityframework;
 
@@ -12,9 +13,11 @@ using arbovirose.Infra.Database.Entityframework;
 namespace arbovirose.Infra.Database.EntityFramework.Migrations
 {
     [DbContext(typeof(ArboviroseContext))]
-    partial class ArboviroseContextModelSnapshot : ModelSnapshot
+    [Migration("20240609152524_AddFieldPrimaryAccess")]
+    partial class AddFieldPrimaryAccess
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
