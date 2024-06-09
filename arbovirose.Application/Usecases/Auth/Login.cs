@@ -23,8 +23,15 @@ namespace arbovirose.Application.Usecases.Auth
             var user = await _userRepository.FindByEmail(userEmail);
             if (user == null) throw new UserNotFoundException();
 
-            var result = _bcryptService.VerifyUserPassword(user);
-            if (!result) throw new InvalidUserPassword();
+            if (user.PrimaryAccess)
+            {
+                var result = _bcryptService.VerifyUserPassword(user, data.Password);
+                if (!result) throw new InvalidUserPassword();
+            }
+            else
+            {
+                user.VerifyGenericPassword(user.Password);
+            }
 
             var token = _tokenService.CreateToken(user);
             if (token == null) throw new TokenNotGeneratedException();

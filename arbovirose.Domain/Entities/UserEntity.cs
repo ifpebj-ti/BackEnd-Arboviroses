@@ -1,4 +1,5 @@
-﻿using arbovirose.Domain.ValueObjects;
+﻿using arbovirose.Domain.Exceptions;
+using arbovirose.Domain.ValueObjects;
 
 namespace arbovirose.Domain.Entities
 {
@@ -29,5 +30,9 @@ namespace arbovirose.Domain.Entities
         public ProfileEntity Profile { get; set; } = null!;
         public Guid ProfileId { get; set; }
 
+        public void VerifyGenericPassword(string password)
+        {
+            if(this.Password != password) throw new InvalidUserGenericPassword();
+        }
     }
 }
