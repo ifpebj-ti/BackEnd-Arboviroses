@@ -55,6 +55,7 @@ builder.Services.AddSwaggerGen(c =>
 });
 
 UserDependency.Register(builder.Services);
+ProfileDependency.Register(builder.Services);
 
 var app = builder.Build();
 
