@@ -17,6 +17,13 @@ namespace arbovirose.WebApi.Controllers
         {
             _logger = logger;
         }
+
+        /// <summary>
+        /// Criar um novo usário
+        /// </summary>
+        /// <returns>Mensagem de sucesso na operação</returns>
+        /// <response code="200">Usuário criado com Sucesso</response>
+        /// <response code="400">Erro na operação</response> 
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -52,6 +59,13 @@ namespace arbovirose.WebApi.Controllers
             
         }
 
+        /// <summary>
+        /// Desativa um usuário
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>Mensagem de sucesso na operação</returns>
+        /// <response code="200">Usuário desativado com Sucesso</response>
+        /// <response code="400">Erro na operação</response>  
         [HttpDelete("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
