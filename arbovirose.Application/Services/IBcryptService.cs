@@ -1,4 +1,5 @@
-﻿using System;
+﻿using arbovirose.Domain.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,8 @@ using System.Threading.Tasks;
 
 namespace arbovirose.Application.Services
 {
-    internal class Class1
+    public interface IBcryptService
     {
+        bool VerifyUserPassword(UserEntity user, string password);
     }
 }

@@ -54,8 +54,11 @@ builder.Services.AddSwaggerGen(c =>
     });
 });
 
+TokenDependency.Register(builder.Services, builder.Configuration);
+BcryptDependency.Register(builder.Services);
 UserDependency.Register(builder.Services);
 ProfileDependency.Register(builder.Services);
+AuthDependency.Register(builder.Services);
 
 var app = builder.Build();
 

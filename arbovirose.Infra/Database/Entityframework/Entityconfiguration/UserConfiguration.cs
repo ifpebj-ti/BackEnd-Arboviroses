@@ -21,6 +21,8 @@ namespace arbovirose.Infra.Database.Entityframework.Entityconfiguration
                 .IsRequired();
             builder.Property(u => u.Active)
                 .IsRequired();
+            builder.Property(u => u.PrimaryAccess)
+                .IsRequired();
             builder.HasOne(u => u.Profile)
                 .WithMany(p => p.Users)
                 .HasForeignKey(u => u.ProfileId);
