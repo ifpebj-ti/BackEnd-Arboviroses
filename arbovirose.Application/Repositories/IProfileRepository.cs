@@ -10,7 +10,7 @@ namespace arbovirose.Application.Repositories
 {
     public interface IProfileRepository
     {
-        Task<ProfileEntity> Create(ProfileEntity data);
-        Task<ProfileEntity?> FindByOffice(Office value);
+        Task<ProfileEntity> Create(ProfileEntity profile);
+        Task<ProfileEntity?> FindByOffice(Office office);
     }
 }
