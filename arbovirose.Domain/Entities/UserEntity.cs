@@ -9,14 +9,13 @@ namespace arbovirose.Domain.Entities
         public UserEntity (
             string Name,
             Email Email,
-            string Password,
             Guid ProfileId
         ) 
         {
             this.Id = Guid.NewGuid();
             this.Name = Name;
             this.Email = Email;
-            this.Password = Password ?? Name+"_"+Email;
+            this.Password = Name+"_"+Email.value;
             this.UniqueCode = new UniqueCode();
             this.ProfileId = ProfileId;
         }

@@ -30,7 +30,9 @@ namespace arbovirose.Infra.Database.Entityframework.Repositories
 
         public async Task<UserEntity?> FindByEmail(Email email)
         {
-            var user = await this._context.Users.Where(u => u.Email == email).FirstOrDefaultAsync();
+            var user = await this._context.Users.Where(u => u.Email == email)
+                .Include(u => u.Profile)
+                .FirstOrDefaultAsync();
             return user;
         }
 

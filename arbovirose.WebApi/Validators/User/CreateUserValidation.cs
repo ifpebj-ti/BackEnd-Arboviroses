@@ -14,9 +14,9 @@ namespace arbovirose.WebApi.Validators.User
                 .EmailAddress().WithMessage("O E-mail deve ser um E-mail válido")
                 .NotEmpty().WithMessage("O email não pode ser vazio")
                 .NotNull().WithMessage("O email não pode ser nulo");
-            RuleFor(x => x.Password)
-                .NotEmpty().WithMessage("O password não pode ser vazio")
-                .NotNull().WithMessage("O password não pode ser nulo");
+            RuleFor(x => x.ProfileId)
+                .NotEmpty().WithMessage("O id do perfil não pode ser vazio")
+                .NotNull().WithMessage("O id do perfil não pode ser nulo");
         }
     }
 }

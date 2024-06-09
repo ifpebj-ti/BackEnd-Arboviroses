@@ -42,7 +42,7 @@ namespace arbovirose.WebApi.Controllers
                 {
                     Name = data.Name,
                     Email = data.Email,
-                    Password = data.Password,
+                    ProfileId = data.ProfileId
                 };
 
                 var user = await createUser.Execute(userData);
