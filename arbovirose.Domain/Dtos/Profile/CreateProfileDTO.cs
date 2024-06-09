@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace arbovirose.Domain.Factories
+namespace arbovirose.Domain.Dtos.Profile
 {
-    internal class Class1
+    public class CreateProfileDTO
     {
+        public string Office { get; set; } = "";
     }
 }
