@@ -54,6 +54,7 @@ builder.Services.AddSwaggerGen(c =>
     });
 });
 
+TokenDependency.Register(builder.Services, builder.Configuration);
 UserDependency.Register(builder.Services);
 ProfileDependency.Register(builder.Services);
 
