@@ -25,6 +25,7 @@ namespace arbovirose.Domain.Entities
         public string Password { get; set; } = "";
         public UniqueCode UniqueCode { get; set; } = null!;
         public bool Active { get; set; } = true;
+        public bool PrimaryAccess { get; set; } = false;
         public ProfileEntity Profile { get; set; } = null!;
         public Guid ProfileId { get; set; }
 

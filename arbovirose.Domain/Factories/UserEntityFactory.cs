@@ -20,5 +20,9 @@ namespace arbovirose.Domain.Factories
                 data.ProfileId
             );
         }
+        public static Email CreateUserEmail(string email)
+        {
+            return new Email(email);
+        }
     }
 }
