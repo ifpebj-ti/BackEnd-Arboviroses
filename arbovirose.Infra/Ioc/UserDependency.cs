@@ -11,6 +11,7 @@ namespace arbovirose.Infra.Ioc
         {
             services.AddScoped<CreateUser>();
             services.AddScoped<DeactivateUser>();
+            services.AddScoped<GetAllUser>();
             services.AddScoped<IUserRepository, UserRepository>();
         }
     }

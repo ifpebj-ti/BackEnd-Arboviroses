@@ -41,5 +41,10 @@ namespace arbovirose.Infra.Database.Entityframework.Repositories
             var user = await this._context.Users.FirstOrDefaultAsync(u => u.Id == id);
             return user;
         }
+
+        public async Task<IEnumerable<UserEntity>> GetAll()
+        {
+            return await this._context.Users.ToListAsync();
+        }
     }
 }

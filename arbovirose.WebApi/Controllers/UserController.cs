@@ -87,5 +87,33 @@ namespace arbovirose.WebApi.Controllers
                 return BadRequest(ex.Message);
             }
         }
+
+        /// <summary>
+        /// Retorna todos os usuários
+        /// </summary>
+        /// <returns>Mensagem de sucesso na operação</returns>
+        /// <response code="200">Usuárioa retornados com Sucesso</response>
+        /// <response code="400">Erro na operação</response>
+        [HttpGet]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public async Task<ActionResult<MessageResponse>> GetAll([FromServices] GetAllUser getAllUser)
+        {
+            try
+            {
+                var users = await getAllUser.Execute();
+
+                this._logger.LogInformation("Usuários retornados com sucesso");
+
+                var response = new MessageResponse("Usuários retornados com sucesso");
+
+                return Ok(response);
+            }
+            catch (Exception ex)
+            {
+                this._logger.LogError(ex.Message);
+                return BadRequest(ex.Message);
+            }
+        }
     }
 }
