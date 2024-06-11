@@ -10,5 +10,6 @@ namespace arbovirose.Application.Repositories
         Task<UserEntity?> Deactivate(Guid id);
         Task<UserEntity?> FindByEmail(Email email);
         Task<UserEntity?> FindById(Guid id);
+        Task<IEnumerable<UserEntity>> GetAll();
     }
 }
