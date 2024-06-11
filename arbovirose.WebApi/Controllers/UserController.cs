@@ -2,7 +2,9 @@
 using arbovirose.Domain.Dtos.User;
 using arbovirose.WebApi.Requestmodels.User;
 using arbovirose.WebApi.Responsemodels;
+using arbovirose.WebApi.Responsemodels.User;
 using arbovirose.WebApi.Validators.User;
+using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -13,9 +15,11 @@ namespace arbovirose.WebApi.Controllers
     public class UserController : ControllerBase
     {
         private readonly ILogger<UserController> _logger;
-        public UserController(ILogger<UserController> logger)
+        private readonly IMapper _mapper;
+        public UserController(ILogger<UserController> logger, IMapper mapper)
         {
             _logger = logger;
+            _mapper = mapper;
         }
 
         /// <summary>
@@ -97,17 +101,16 @@ namespace arbovirose.WebApi.Controllers
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<ActionResult<MessageResponse>> GetAll([FromServices] GetAllUser getAllUser)
+        public async Task<ActionResult<IEnumerable<GetAllUserResponse>>> GetAll([FromServices] GetAllUser getAllUser)
         {
             try
             {
                 var users = await getAllUser.Execute();
+                var usersResponse = this._mapper.Map<IEnumerable<GetAllUserResponse>>(users);
 
                 this._logger.LogInformation("Usuários retornados com sucesso");
 
-                var response = new MessageResponse("Usuários retornados com sucesso");
-
-                return Ok(response);
+                return Ok(usersResponse);
             }
             catch (Exception ex)
             {

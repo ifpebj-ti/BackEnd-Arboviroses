@@ -44,7 +44,7 @@ namespace arbovirose.Infra.Database.Entityframework.Repositories
 
         public async Task<IEnumerable<UserEntity>> GetAll()
         {
-            return await this._context.Users.ToListAsync();
+            return await this._context.Users.Include(x => x.Profile).ToListAsync();
         }
     }
 }
