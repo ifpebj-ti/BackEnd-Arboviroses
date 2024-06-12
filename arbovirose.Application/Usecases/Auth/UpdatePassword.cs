@@ -6,27 +6,26 @@ using arbovirose.Domain.Factories;
 
 namespace arbovirose.Application.Usecases.Auth
 {
-    public class PrimaryAccess
+    public class UpdatePassword
     {
         private readonly IUserRepository _userRepository;
         private readonly IBcryptService _bcryptService;
-        public PrimaryAccess(IUserRepository userRepository, IBcryptService bcryptService)
+        public UpdatePassword(IUserRepository userRepository, IBcryptService bcryptService)
         {
-            this._userRepository = userRepository;
-            this._bcryptService = bcryptService;
+            _userRepository = userRepository;
+            _bcryptService = bcryptService;
         }
-        public async Task Execute(PrimaryAccessDTO data)
+        public async Task Execute(UpdatePasswordDTO data)
         {
             var userEmail = UserEntityFactory.CreateUserEmail(data.Email);
             var user = await _userRepository.FindByEmail(userEmail);
             if (user == null) throw new UserNotFoundException();
 
-            user.VerifyGenericPassword(data.DefaultPassword);
+            user.VerifyUniqueCode(data.UniqueCode);
 
-            var hashPassword = _bcryptService.GenerateHashPassword(data.NewPassword);
+            var hashPassword = _bcryptService.GenerateHashPassword(data.Password);
 
-            var result = await _userRepository.UpdatePassword(user.Id, hashPassword);
-            if (result == null) throw new InvalidUserUpdatePassword();
+            await _userRepository.UpdatePassword(user.Id, hashPassword);
         }
     }
 }

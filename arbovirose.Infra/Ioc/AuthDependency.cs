@@ -9,6 +9,7 @@ namespace arbovirose.Infra.Ioc
         {
             service.AddScoped<Login>();
             service.AddScoped<PrimaryAccess>();
+            service.AddScoped<UpdatePassword>();
         }
     }
 }
