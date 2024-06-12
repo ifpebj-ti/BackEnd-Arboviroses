@@ -1,7 +1,7 @@
 ﻿using arbovirose.Application.Exceptions;
 using arbovirose.Application.Repositories;
 using arbovirose.Application.Services;
-using arbovirose.Domain.Dtos.User;
+using arbovirose.Domain.Dtos.Auth;
 using arbovirose.Domain.Factories;
 
 namespace arbovirose.Application.Usecases.Auth

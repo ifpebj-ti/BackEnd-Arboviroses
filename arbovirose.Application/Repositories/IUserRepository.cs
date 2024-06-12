@@ -11,5 +11,6 @@ namespace arbovirose.Application.Repositories
         Task<UserEntity?> FindByEmail(Email email);
         Task<UserEntity?> FindById(Guid id);
         Task<IEnumerable<UserEntity>> GetAll();
+        Task<UserEntity> UpdatePassword(string password);
     }
 }

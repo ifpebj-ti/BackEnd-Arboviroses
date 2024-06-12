@@ -10,5 +10,6 @@ namespace arbovirose.Application.Services
     public interface IBcryptService
     {
         bool VerifyUserPassword(UserEntity user, string password);
+        string GenerateHashPassword(string password);
     }
 }
