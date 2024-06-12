@@ -3,6 +3,7 @@ using arbovirose.Domain.Dtos.Profile;
 using arbovirose.WebApi.Requestmodels.Profile;
 using arbovirose.WebApi.Responsemodels;
 using arbovirose.WebApi.Validators.Profile;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace arbovirose.WebApi.Controllers
@@ -23,9 +24,12 @@ namespace arbovirose.WebApi.Controllers
         /// <returns>Mensagem de sucesso na operação</returns>
         /// <response code="200">Perfil criado com Sucesso</response>
         /// <response code="400">Erro na operação</response>
+        /// <response code="401">Acesso não autorizado</response>
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [Authorize(Roles = "Administrator")]
         public async Task<ActionResult<MessageResponse>> Create([FromBody] CreateProfileRequest data, [FromServices] CreateProfile createProfile)
         {
             try

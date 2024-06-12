@@ -5,6 +5,7 @@ using arbovirose.WebApi.Responsemodels;
 using arbovirose.WebApi.Responsemodels.User;
 using arbovirose.WebApi.Validators.User;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace arbovirose.WebApi.Controllers
@@ -26,10 +27,13 @@ namespace arbovirose.WebApi.Controllers
         /// </summary>
         /// <returns>Mensagem de sucesso na operação</returns>
         /// <response code="200">Usuário criado com Sucesso</response>
-        /// <response code="400">Erro na operação</response> 
+        /// <response code="400">Erro na operação</response>
+        /// <response code="401">Acesso não autorizado</response> 
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [Authorize(Roles = "Administrator")]
         public async Task<ActionResult<MessageResponse>> Create([FromBody] CreateUserRequest data, [FromServices] CreateUser createUser)
         {
             try
@@ -68,10 +72,13 @@ namespace arbovirose.WebApi.Controllers
         /// <param name="id"></param>
         /// <returns>Mensagem de sucesso na operação</returns>
         /// <response code="200">Usuário desativado com Sucesso</response>
-        /// <response code="400">Erro na operação</response>  
+        /// <response code="400">Erro na operação</response> 
+        /// <response code="401">Acesso não autorizado</response>
         [HttpDelete("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [Authorize(Roles = "Administrator")]
         public async Task<ActionResult<MessageResponse>> Deactivate([FromRoute] Guid id, [FromServices] DeactivateUser deactivateUser)
         {
             try
@@ -97,9 +104,12 @@ namespace arbovirose.WebApi.Controllers
         /// <returns>Mensagem de sucesso na operação</returns>
         /// <response code="200">Usuárioa retornados com Sucesso</response>
         /// <response code="400">Erro na operação</response>
+        /// <response code="401">Acesso não autorizado</response>
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [Authorize(Roles = "Administrator")]
         public async Task<ActionResult<IEnumerable<GetAllUserResponse>>> GetAll([FromServices] GetAllUser getAllUser)
         {
             try
