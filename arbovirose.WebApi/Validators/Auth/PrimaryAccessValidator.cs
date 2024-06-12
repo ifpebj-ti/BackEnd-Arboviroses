@@ -10,12 +10,12 @@ namespace arbovirose.WebApi.Validators.Auth
             RuleFor(x => x.Email)
                 .NotEmpty().WithMessage("O email não pode ser vazio")
                 .NotNull().WithMessage("O email não pode ser nulo");
-            RuleFor(x => x.Password)
-                .NotEmpty().WithMessage("A senha não pode ser vazia")
-                .NotNull().WithMessage("A senha não pode ser nula");
-            RuleFor(x => x.UniqueCode)
-                .NotEmpty().WithMessage("O código de acesso não pode ser vazia")
-                .NotNull().WithMessage("O código de acesso não pode ser nula");
+            RuleFor(x => x.NewPassword)
+                .NotEmpty().WithMessage("A nova senha não pode ser vazia")
+                .NotNull().WithMessage("A nova senha não pode ser nula");
+            RuleFor(x => x.DefaultPassword)
+                .NotEmpty().WithMessage("A senha padrão não pode ser vazia")
+                .NotNull().WithMessage("O A senha padrão não pode ser nula");
         }
     }
 }

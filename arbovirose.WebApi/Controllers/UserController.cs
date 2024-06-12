@@ -5,7 +5,6 @@ using arbovirose.WebApi.Responsemodels;
 using arbovirose.WebApi.Responsemodels.User;
 using arbovirose.WebApi.Validators.User;
 using AutoMapper;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace arbovirose.WebApi.Controllers

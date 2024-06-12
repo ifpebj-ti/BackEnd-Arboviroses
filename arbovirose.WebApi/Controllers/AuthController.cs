@@ -62,6 +62,7 @@ namespace arbovirose.WebApi.Controllers
         /// <summary>
         /// Alterar senha no primeiro acesso
         /// </summary>
+        /// <returns>Mensagem de sucesso na operação</returns>
         /// <response code="200">Login realizado com Sucesso</response>
         /// <response code="400">Erro na operação</response>
         [HttpPost("primaryaccess")]
@@ -80,11 +81,49 @@ namespace arbovirose.WebApi.Controllers
                 var primaryAccessData = new PrimaryAccessDTO()
                 {
                     Email = data.Email,
-                    Password = data.Password,
-                    UniqueCode = data.UniqueCode,
+                    NewPassword = data.NewPassword,
+                    DefaultPassword= data.DefaultPassword,
                 };
 
                 await primaryAccess.Execute(primaryAccessData);
+
+                this._logger.LogInformation("Senha alterda com sucesso");
+                var response = new MessageResponse("Senha alterda com sucesso");
+                return Ok(response);
+            }
+            catch (Exception ex)
+            {
+                this._logger.LogError(ex.Message);
+                return NotFound(ex.Message);
+            }
+        }
+
+        /// <summary>
+        /// Alterar senha do usuário
+        /// </summary>
+        /// <returns>Mensagem de sucesso na operação</returns>
+        /// <response code="200">Login realizado com Sucesso</response>
+        /// <response code="400">Erro na operação</response>
+        [HttpPost("updatepassword")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public async Task<ActionResult<MessageResponse>> UpdatePassword([FromBody] UpdatePasswordRequest data, [FromServices] UpdatePassword updatePassword) 
+        {
+            try
+            {
+                var validator = new UpdatePasswordValidator();
+                var result = validator.Validate(data);
+                if (!result.IsValid)
+                {
+                    return BadRequest(result.Errors);
+                }
+                var updatePasswordData = new UpdatePasswordDTO()
+                {
+                    Email = data.Email,
+                    Password = data.Password,
+                    UniqueCode = data.UniqueCode
+                };
+                await updatePassword.Execute(updatePasswordData);
 
                 this._logger.LogInformation("Senha alterda com sucesso");
                 var response = new MessageResponse("Senha alterda com sucesso");

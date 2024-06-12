@@ -3,7 +3,6 @@ using arbovirose.Domain.Dtos.Profile;
 using arbovirose.WebApi.Requestmodels.Profile;
 using arbovirose.WebApi.Responsemodels;
 using arbovirose.WebApi.Validators.Profile;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace arbovirose.WebApi.Controllers
