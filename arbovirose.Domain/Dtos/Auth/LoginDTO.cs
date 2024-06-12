@@ -1,4 +1,4 @@
-﻿namespace arbovirose.Domain.Dtos.User
+﻿namespace arbovirose.Domain.Dtos.Auth
 {
     public class LoginDTO
     {

@@ -33,5 +33,9 @@ namespace arbovirose.Domain.Entities
         {
             if(this.Password != password) throw new InvalidUserGenericPassword();
         }
+        public void VerifyUniqueCode(string uniqueCode)
+        {
+            if (this.UniqueCode.value != uniqueCode) throw new InvalidUserUniqueCode();
+        }
     }
 }

@@ -46,5 +46,19 @@ namespace arbovirose.Infra.Database.Entityframework.Repositories
         {
             return await this._context.Users.Include(x => x.Profile).ToListAsync();
         }
+
+        public async Task<UserEntity?> UpdatePassword(Guid id, string password)
+        {
+            var user = await this._context.Users.Where(x => x.Id == id).FirstOrDefaultAsync();
+            if(user != null)
+            {
+                user.PrimaryAccess = true;
+                user.Password = password;
+            }
+            await this._context.SaveChangesAsync();
+
+            return user;
+
+        }
     }
 }

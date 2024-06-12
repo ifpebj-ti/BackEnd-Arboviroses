@@ -1,6 +1,7 @@
 ﻿using arbovirose.Application.Usecases.Auth;
-using arbovirose.Domain.Dtos.User;
+using arbovirose.Domain.Dtos.Auth;
 using arbovirose.WebApi.Requestmodels.Auth;
+using arbovirose.WebApi.Responsemodels;
 using arbovirose.WebApi.Responsemodels.Auth;
 using arbovirose.WebApi.Validators.Auth;
 using Microsoft.AspNetCore.Mvc;
@@ -49,6 +50,45 @@ namespace arbovirose.WebApi.Controllers
 
                 this._logger.LogInformation("Login realizado com sucesso");
                 return Ok(new LoginResponse { Token = token});
+            }
+            catch (Exception ex)
+            {
+                this._logger.LogError(ex.Message);
+                return NotFound(ex.Message);
+            }
+        }
+
+
+        /// <summary>
+        /// Alterar senha no primeiro acesso
+        /// </summary>
+        /// <response code="200">Login realizado com Sucesso</response>
+        /// <response code="400">Erro na operação</response>
+        [HttpPost("primaryaccess")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public async Task<ActionResult<MessageResponse>> PrimaryAccess([FromBody] PrimaryAccessRequest data, [FromServices] PrimaryAccess primaryAccess)
+        {
+            try
+            {
+                var validator = new PrimaryAccessValidator();
+                var result = validator.Validate(data);
+                if (!result.IsValid)
+                {
+                    return BadRequest(result.Errors);
+                }
+                var primaryAccessData = new PrimaryAccessDTO()
+                {
+                    Email = data.Email,
+                    Password = data.Password,
+                    UniqueCode = data.UniqueCode,
+                };
+
+                await primaryAccess.Execute(primaryAccessData);
+
+                this._logger.LogInformation("Senha alterda com sucesso");
+                var response = new MessageResponse("Senha alterda com sucesso");
+                return Ok(response);
             }
             catch (Exception ex)
             {
