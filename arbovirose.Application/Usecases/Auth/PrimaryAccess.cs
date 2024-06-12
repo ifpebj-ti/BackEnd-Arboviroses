@@ -25,7 +25,7 @@ namespace arbovirose.Application.Usecases.Auth
 
             var hashPassword = _bcryptService.GenerateHashPassword(data.Password);
 
-            var result = await _userRepository.UpdatePassword(data.Password);
+            var result = await _userRepository.UpdatePassword(user.Id, hashPassword);
             if (result == null) throw new InvalidUserUpdatePassword();
         }
     }

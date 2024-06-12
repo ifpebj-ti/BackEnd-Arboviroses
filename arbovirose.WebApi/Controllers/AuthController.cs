@@ -64,7 +64,7 @@ namespace arbovirose.WebApi.Controllers
         /// </summary>
         /// <response code="200">Login realizado com Sucesso</response>
         /// <response code="400">Erro na operação</response>
-        [HttpPost]
+        [HttpPost("primaryaccess")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult<MessageResponse>> PrimaryAccess([FromBody] PrimaryAccessRequest data, [FromServices] PrimaryAccess primaryAccess)

@@ -8,6 +8,7 @@ namespace arbovirose.Infra.Ioc
         public static void Register(IServiceCollection service)
         {
             service.AddScoped<Login>();
+            service.AddScoped<PrimaryAccess>();
         }
     }
 }
