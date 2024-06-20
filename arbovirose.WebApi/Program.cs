@@ -60,6 +60,7 @@ BcryptDependency.Register(builder.Services);
 UserDependency.Register(builder.Services);
 ProfileDependency.Register(builder.Services);
 AuthDependency.Register(builder.Services);
+InfoHomeDependency.Register(builder.Services);
 
 var app = builder.Build();
 
