@@ -14,8 +14,6 @@ namespace arbovirose.Infra.Database.Entityframework.Entityconfiguration
             builder.Property(i => i.Title)
                 .HasColumnType("varchar(50)")
                 .IsRequired();
-            builder.ComplexProperty(i => i.ImgUrl)
-                .IsRequired();
             builder.Property(i => i.TitleLink)
                 .HasColumnType("varchar(100)");
             builder.Property(i => i.Link)
