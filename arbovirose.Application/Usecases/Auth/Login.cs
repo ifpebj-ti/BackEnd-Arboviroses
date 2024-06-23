@@ -30,7 +30,7 @@ namespace arbovirose.Application.Usecases.Auth
             }
             else
             {
-                user.VerifyGenericPassword(user.Password);
+                user.VerifyGenericPassword(data.Password);
             }
 
             var token = _tokenService.CreateToken(user);
