@@ -89,11 +89,11 @@ namespace arbovirose.WebApi.Controllers
         /// <response code="200">Informações da home retornadas com Sucesso</response>
         /// <response code="400">Erro na operação</response>
         /// <response code="401">Acesso não autorizado</response>
-        /// [HttpPost]
+        [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
-        [Authorize(Roles = "Administrator, Editor")]
+        //[Authorize(Roles = "Administrator, Editor")]
         public async Task<ActionResult<IEnumerable<InfoHomeResponse>>> GetAll([FromServices] GetAllInfoHome getAllInfoHome)
         {
             try

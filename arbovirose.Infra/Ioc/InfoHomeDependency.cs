@@ -12,8 +12,12 @@ namespace arbovirose.Infra.Ioc
         public static void Register(IServiceCollection service)
         {
             service.AddScoped<AddInfoHome>();
+            service.AddScoped<DeleteInfoHome>();
+            service.AddScoped<EditInfoHome>();
+            service.AddScoped<GetAllInfoHome>();
             service.AddScoped<IInfoHomeRepository, InfoHomeRepository>();
             service.AddScoped<IUploadService, UploadService>();
+
         }
     }
 }
