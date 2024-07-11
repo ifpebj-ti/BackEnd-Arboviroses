@@ -27,5 +27,19 @@ namespace arbovirose.Infra.Services
 
             return true;
         }
+
+        public bool Delete(string fileName)
+        {
+            string uploadsDirectory = Path.Combine(Directory.GetCurrentDirectory(), "Uploads");
+            string filePath = Path.Combine(uploadsDirectory, fileName);
+
+            if (File.Exists(filePath))
+            {
+                File.Delete(filePath);
+                return true;
+            }
+
+            return false;
+        }
     }
 }
