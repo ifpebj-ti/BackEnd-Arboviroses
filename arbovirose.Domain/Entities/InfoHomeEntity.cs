@@ -1,4 +1,6 @@
-﻿namespace arbovirose.Domain.Entities
+﻿using arbovirose.Domain.ValueObjects;
+
+namespace arbovirose.Domain.Entities
 {
     public class InfoHomeEntity
     {
@@ -7,7 +9,8 @@
             string? Topic,
             string Title,
             string? TitleLink,
-            string Link
+            string Link,
+            TypeInfo TypeInfo
         )
         {
             this.Id = Guid.NewGuid();
@@ -15,11 +18,13 @@
             this.Title = Title;
             this.TitleLink = TitleLink;
             this.Link = Link;
+            this.TypeInfo = TypeInfo;
         }
         public Guid Id { get; set; }
         public string? Topic { get; set; }
         public string Title { get; set; } = "";
         public string? TitleLink { get; set; }
         public string Link { get; set; } = "";
+        public TypeInfo TypeInfo { get; set; } = null!;
     }
 }

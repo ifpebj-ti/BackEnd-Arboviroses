@@ -13,6 +13,9 @@ namespace arbovirose.WebApi.Validators.InfoHome
             RuleFor(x => x.Link)
                 .NotEmpty().WithMessage("O link não pode ser vazio")
                 .NotNull().WithMessage("O link não pode ser nulo");
+            RuleFor(x => x.TypeInfo)
+                .NotEmpty().WithMessage("O tipo de informação da home não pode ser vazio")
+                .NotNull().WithMessage("O tipo de informação da home não pode ser nulo");
             RuleFor(x => x.File)
                 .NotEmpty().WithMessage("O arquivo não pode ser vazio")
                 .NotNull().WithMessage("O arquivo não pode ser nulo");

@@ -19,6 +19,11 @@ namespace arbovirose.Infra.Database.Entityframework.Entityconfiguration
             builder.Property(i => i.Link)
                 .HasColumnType("varchar(100)")
                 .IsRequired();
+            builder.ComplexProperty(i => i.TypeInfo)
+                .Property(i => i.Value)
+                .HasDefaultValue("")
+                .HasColumnType("varchar(10)")
+                .IsRequired();
         }
     }
 }

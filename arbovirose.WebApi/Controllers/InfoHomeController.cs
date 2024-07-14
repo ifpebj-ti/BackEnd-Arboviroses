@@ -7,12 +7,6 @@ using arbovirose.WebApi.Validators.InfoHome;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace arbovirose.WebApi.Controllers
 {
@@ -29,6 +23,9 @@ namespace arbovirose.WebApi.Controllers
         /// <summary>
         /// Adicionar informações na home
         /// </summary>
+        /// <remarks>
+        /// Obs: Para o campo TypeInfo os valores permitidos são: Article, Video e New
+        /// </remarks>
         /// <returns>Mensagem de sucesso na operação</returns>
         /// <response code="200">Informações da home adicionadas com Sucesso</response>
         /// <response code="400">Erro na operação</response>
@@ -63,6 +60,7 @@ namespace arbovirose.WebApi.Controllers
                     Title = data.Title,
                     TitleLink = data.TitleLink,
                     Link = data.Link,
+                    TypeInfo = data.TypeInfo,
                     File = fileBuffer,
                     OriginalFileName = data.File.FileName.Split(".")[0],
                     TypeFile = data.File.ContentType.Split("/")[1],
@@ -93,7 +91,6 @@ namespace arbovirose.WebApi.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
-        //[Authorize(Roles = "Administrator, Editor")]
         public async Task<ActionResult<IEnumerable<InfoHomeResponse>>> GetAll([FromServices] GetAllInfoHome getAllInfoHome)
         {
             try
@@ -107,6 +104,7 @@ namespace arbovirose.WebApi.Controllers
                     Title = info.Title,
                     TitleLink = info.TitleLink,
                     Link = info.Link,
+                    TypeInfo = info.TypeInfo.Value
                 });
 
                 this._logger.LogInformation("Informações retornadas com sucesso");

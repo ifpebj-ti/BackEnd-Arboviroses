@@ -6,6 +6,7 @@
         public string Title { get; set; } = "";
         public string? TitleLink { get; set; }
         public string Link { get; set; } = "";
+        public string TypeInfo { get; set; } = "";
         public IFormFile File { get; set; } = null!;
     }
 }

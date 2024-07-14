@@ -1,5 +1,6 @@
 ﻿using arbovirose.Domain.Dtos.InfoHome;
 using arbovirose.Domain.Entities;
+using arbovirose.Domain.ValueObjects;
 
 namespace arbovirose.Domain.Factories
 {
@@ -12,7 +13,8 @@ namespace arbovirose.Domain.Factories
                 data.Topic,
                 data.Title,
                 data.TitleLink,
-                data.Link
+                data.Link,
+                new TypeInfo(data.TypeInfo)
             );
         }
 

@@ -7,6 +7,7 @@ namespace arbovirose.Domain.Dtos.InfoHome
         public string Title { get; set; } = "";
         public string? TitleLink { get; set; }
         public string Link { get; set; } = "";
+        public string TypeInfo { get; set; } = "";
         public Byte[] File { get; set; } = new Byte[0];
         public string TypeFile { get; set; } = "";
         public string OriginalFileName { get; set; } = "";
