@@ -3,13 +3,12 @@ using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using arbovirose.Infra.Database.Entityframework;
 
 #nullable disable
 
-namespace arbovirose.Infra.Database.EntityFramework.Migrations
+namespace arbovirose.Infra.Database.Entityframework.Migrations
 {
     [DbContext(typeof(ArboviroseContext))]
     partial class ArboviroseContextModelSnapshot : ModelSnapshot
@@ -17,17 +16,13 @@ namespace arbovirose.Infra.Database.EntityFramework.Migrations
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
-            modelBuilder
-                .HasAnnotation("ProductVersion", "8.0.6")
-                .HasAnnotation("Relational:MaxIdentifierLength", 128);
-
-            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+            modelBuilder.HasAnnotation("ProductVersion", "8.0.7");
 
             modelBuilder.Entity("arbovirose.Domain.Entities.InfoHomeEntity", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Link")
                         .IsRequired()
@@ -63,7 +58,7 @@ namespace arbovirose.Infra.Database.EntityFramework.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("TEXT");
 
                     b.ComplexProperty<Dictionary<string, object>>("Office", "arbovirose.Domain.Entities.ProfileEntity.Office#Office", b1 =>
                         {
@@ -71,7 +66,7 @@ namespace arbovirose.Infra.Database.EntityFramework.Migrations
 
                             b1.Property<string>("value")
                                 .IsRequired()
-                                .HasColumnType("nvarchar(max)");
+                                .HasColumnType("TEXT");
                         });
 
                     b.HasKey("Id");
@@ -83,10 +78,10 @@ namespace arbovirose.Infra.Database.EntityFramework.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("TEXT");
 
                     b.Property<bool>("Active")
-                        .HasColumnType("bit");
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -97,10 +92,10 @@ namespace arbovirose.Infra.Database.EntityFramework.Migrations
                         .HasColumnType("varchar(255)");
 
                     b.Property<bool>("PrimaryAccess")
-                        .HasColumnType("bit");
+                        .HasColumnType("INTEGER");
 
                     b.Property<Guid>("ProfileId")
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("TEXT");
 
                     b.ComplexProperty<Dictionary<string, object>>("Email", "arbovirose.Domain.Entities.UserEntity.Email#Email", b1 =>
                         {
@@ -108,7 +103,7 @@ namespace arbovirose.Infra.Database.EntityFramework.Migrations
 
                             b1.Property<string>("value")
                                 .IsRequired()
-                                .HasColumnType("nvarchar(max)");
+                                .HasColumnType("TEXT");
                         });
 
                     b.ComplexProperty<Dictionary<string, object>>("UniqueCode", "arbovirose.Domain.Entities.UserEntity.UniqueCode#UniqueCode", b1 =>
@@ -117,7 +112,7 @@ namespace arbovirose.Infra.Database.EntityFramework.Migrations
 
                             b1.Property<string>("value")
                                 .IsRequired()
-                                .HasColumnType("nvarchar(max)");
+                                .HasColumnType("TEXT");
                         });
 
                     b.HasKey("Id");

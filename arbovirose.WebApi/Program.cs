@@ -1,71 +1,21 @@
-using Microsoft.EntityFrameworkCore;
-using arbovirose.Infra.Database.Entityframework;
-using Microsoft.OpenApi.Models;
-using System.Reflection;
 using arbovirose.Infra.Ioc;
 using FluentValidation;
 using arbovirose.WebApi.Validators.User;
+using arbovirose.WebApi.Config;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddValidatorsFromAssemblyContaining<CreateUserValidator>();
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-
-builder.Services.AddDbContext<ArboviroseContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
-
-builder.Services.AddSwaggerGen(c =>
-{
-    c.SwaggerDoc("v1", new OpenApiInfo
-    {
-        Title = "arbovirose.WebApi",
-        Version = "v1"
-    });
-
-    var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
-    var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
-    c.IncludeXmlComments(xmlPath);
-
-    c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme()
-    {
-        Name = "Authorization",
-        Type = SecuritySchemeType.ApiKey,
-        BearerFormat = "JWT",
-        In = ParameterLocation.Header,
-        Description = "Token JWT de autorização no formato Bearer <token>"
-    });
-    c.AddSecurityRequirement(new OpenApiSecurityRequirement()
-    {
-        {
-            new OpenApiSecurityScheme
-            {
-                Reference = new OpenApiReference
-                {
-                    Type = ReferenceType.SecurityScheme,
-                    Id = "Bearer"
-                }
-            },
-            new string[] {}
-        }
-    });
-});
-
-builder.Services.AddCors(options =>
-{
-    options.AddPolicy(name: "CorsPolicy",
-        options =>
-        {
-            options.WithOrigins("http://localhost:3000")
-                .AllowAnyHeader()
-                .AllowAnyMethod();
-        });
-});
-
+builder.Services.AddValidatorsFromAssemblyContaining<CreateUserValidator>();
+//Extension methods
+builder.Services.AddCustomSwagger();
+builder.Services.AddCustomCors();
+builder.Services.AddCustomDbContext(builder.Configuration);
 
 TokenDependency.Register(builder.Services, builder.Configuration);
 BcryptDependency.Register(builder.Services);
