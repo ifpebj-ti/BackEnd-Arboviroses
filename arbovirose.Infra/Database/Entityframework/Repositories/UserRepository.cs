@@ -23,7 +23,7 @@ namespace arbovirose.Infra.Database.Entityframework.Repositories
         {
             var user = await this._context.Users.FindAsync(id);
             if (user == null) return null;
-            user.Active = false;
+            user.Active = !user.Active;
             await this._context.SaveChangesAsync();
             return user;
         }
