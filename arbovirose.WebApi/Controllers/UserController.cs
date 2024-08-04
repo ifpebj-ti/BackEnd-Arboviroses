@@ -109,7 +109,7 @@ namespace arbovirose.WebApi.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
-        //[Authorize(Roles = "Administrator")]
+        [Authorize(Roles = "Administrator")]
         public async Task<ActionResult<IEnumerable<GetAllUserResponse>>> GetAll([FromServices] GetAllUser getAllUser)
         {
             try
