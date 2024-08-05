@@ -8,5 +8,6 @@
         public string? TitleLink { get; set; }
         public string Link { get; set; } = "";
         public string TypeInfo { get; set; } = "";
+        public string FileBase64 { get; set; } = "";
     }
 }

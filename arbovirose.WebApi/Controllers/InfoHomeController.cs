@@ -45,7 +45,7 @@ namespace arbovirose.WebApi.Controllers
                 {
                     return BadRequest(result.Errors);
                 }
-
+                
                 using Stream fileStream = data.File.OpenReadStream();
                 var fileBuffer = new byte[fileStream.Length];
 
@@ -97,14 +97,31 @@ namespace arbovirose.WebApi.Controllers
             {
                 var infoHome = await getAllInfoHome.Execute();
 
-                var response = infoHome.Select(info => new InfoHomeResponse()
+                string uploadsDirectory = Path.Combine(Directory.GetCurrentDirectory(), "Uploads");
+                
+                var response = infoHome.Select(info =>
                 {
-                    Id = info.Id,
-                    Topic = info.Topic,
-                    Title = info.Title,
-                    TitleLink = info.TitleLink,
-                    Link = info.Link,
-                    TypeInfo = info.TypeInfo.Value
+                    var filePath = Directory.GetFiles(uploadsDirectory)
+                                    .FirstOrDefault(file => Path.GetFileName(file)
+                                    .StartsWith($"{info.Id}_"));
+
+                    string base64File = string.Empty;
+                    if (filePath != null && System.IO.File.Exists(filePath))
+                    {
+                        byte[] fileBytes = System.IO.File.ReadAllBytes(filePath);
+                        base64File = Convert.ToBase64String(fileBytes);
+                    }
+
+                    return new InfoHomeResponse()
+                    {
+                        Id = info.Id,
+                        Topic = info.Topic,
+                        Title = info.Title,
+                        TitleLink = info.TitleLink,
+                        Link = info.Link,
+                        TypeInfo = info.TypeInfo.Value,
+                        FileBase64 = base64File
+                    };
                 });
 
                 this._logger.LogInformation("Informações retornadas com sucesso");
