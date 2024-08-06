@@ -187,8 +187,8 @@ namespace arbovirose.WebApi.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
-        //[Authorize(Roles = "Administrator, Editor")]
-        public async Task<ActionResult<MessageResponse>> Delete([FromRoute] DeleteInfoHomeRequest data, [FromServices] DeleteInfoHome deleteInfoHome)
+        [Authorize(Roles = "Administrator, Editor")]
+        public async Task<ActionResult<MessageResponse>> Delete([FromQuery] DeleteInfoHomeRequest data, [FromServices] DeleteInfoHome deleteInfoHome)
         {
             try
             {

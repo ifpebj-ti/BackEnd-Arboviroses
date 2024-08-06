@@ -32,7 +32,12 @@ namespace arbovirose.Infra.Services
         {
             string uploadsDirectory = Path.Combine(Directory.GetCurrentDirectory(), "Uploads");
 
-            string filePath = Directory.GetFiles(uploadsDirectory)
+            if (!Directory.Exists(uploadsDirectory))
+            {
+                return false;
+            }
+
+            var filePath = Directory.GetFiles(uploadsDirectory)
                                 .FirstOrDefault(file => Path.GetFileName(file)
                                 .StartsWith($"{fileID}_"));
 
