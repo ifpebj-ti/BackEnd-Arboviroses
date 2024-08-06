@@ -28,12 +28,15 @@ namespace arbovirose.Infra.Services
             return true;
         }
 
-        public bool Delete(string fileName)
+        public bool Delete(string fileID)
         {
             string uploadsDirectory = Path.Combine(Directory.GetCurrentDirectory(), "Uploads");
-            string filePath = Path.Combine(uploadsDirectory, fileName);
 
-            if (File.Exists(filePath))
+            string filePath = Directory.GetFiles(uploadsDirectory)
+                                .FirstOrDefault(file => Path.GetFileName(file)
+                                .StartsWith($"{fileID}_"));
+
+            if (filePath != null && System.IO.File.Exists(filePath))
             {
                 File.Delete(filePath);
                 return true;

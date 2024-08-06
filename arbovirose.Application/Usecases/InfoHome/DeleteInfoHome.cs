@@ -21,12 +21,7 @@ namespace arbovirose.Application.Usecases.InfoHome
 
         public async Task<bool> Execute(DeleteInfoHomeDTO data)
         {
-            var infoHome = await _infoHomeRepository.GetById(data.Id);
-            if (infoHome == null) throw new InvalidExistingInfoHome();
-
-            var fileName = $"{infoHome.Id}_{data.OriginalFileName}.{data.TypeFile}";
-
-            var resultDelete = _uploadService.Delete(fileName);
+            var resultDelete = _uploadService.Delete(data.Id.ToString());
             if (!resultDelete) throw new InvalidDeleteFileException();
 
             var result = await _infoHomeRepository.Delete(data.Id);

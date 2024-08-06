@@ -137,7 +137,7 @@ namespace arbovirose.WebApi.Controllers
         /// <summary>
         /// Editar informações na home
         /// </summary>
-        [HttpPut("{id}")]
+        [HttpPut]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
@@ -183,20 +183,18 @@ namespace arbovirose.WebApi.Controllers
         /// <summary>
         /// Deletar informações da home
         /// </summary>
-        [HttpDelete("{id}")]
+        [HttpDelete]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
-        [Authorize(Roles = "Administrator, Editor")]
-        public async Task<ActionResult<MessageResponse>> Delete([FromBody] DeleteInfoHomeRequest data, [FromServices] DeleteInfoHome deleteInfoHome)
+        //[Authorize(Roles = "Administrator, Editor")]
+        public async Task<ActionResult<MessageResponse>> Delete([FromRoute] DeleteInfoHomeRequest data, [FromServices] DeleteInfoHome deleteInfoHome)
         {
             try
             {
                 var deleteInfoHomeData = new DeleteInfoHomeDTO()
                 {
                     Id = data.Id,
-                    TypeFile = data.TypeFile,
-                    OriginalFileName = data.OriginalFileName,
                 };
 
                 await deleteInfoHome.Execute(deleteInfoHomeData);

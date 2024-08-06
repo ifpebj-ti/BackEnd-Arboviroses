@@ -6,6 +6,6 @@ namespace arbovirose.Application.Services
     public interface IUploadService
     {
         bool Upload(UploadDTO data);
-        bool Delete(string fileName);
+        bool Delete(string fileID);
     }
 }
