@@ -84,11 +84,17 @@ namespace arbovirose.WebApi.Controllers
             try
             {
                 var user = await deactivateUser.Execute(id);
-
+                
                 this._logger.LogInformation("Usuário desativado com sucesso");
 
-                var response = new MessageResponse("Usuário desativado com sucesso");
+                MessageResponse response;
 
+                if (user.Active == false) {
+                    response = new MessageResponse("Usuário desativado com sucesso");
+                } else
+                {
+                    response = new MessageResponse("Usuário ativado com sucesso");
+                }
                 return Ok(response);
             }
             catch (Exception ex)
