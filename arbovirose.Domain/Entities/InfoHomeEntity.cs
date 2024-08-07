@@ -20,6 +20,22 @@ namespace arbovirose.Domain.Entities
             this.Link = Link;
             this.TypeInfo = TypeInfo;
         }
+        public InfoHomeEntity(
+            Guid Id,
+            string? Topic,
+            string Title,
+            string? TitleLink,
+            string Link,
+            TypeInfo TypeInfo
+        )
+        {
+            this.Id = Id;
+            this.Topic = Topic;
+            this.Title = Title;
+            this.TitleLink = TitleLink;
+            this.Link = Link;
+            this.TypeInfo = TypeInfo;
+        }
         public Guid Id { get; set; }
         public string? Topic { get; set; }
         public string Title { get; set; } = "";

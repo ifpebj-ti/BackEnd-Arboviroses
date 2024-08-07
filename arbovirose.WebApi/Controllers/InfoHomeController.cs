@@ -142,35 +142,36 @@ namespace arbovirose.WebApi.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [Authorize(Roles = "Administrator, Editor")]
-        public async Task<ActionResult<InfoHomeResponse>> Edit([FromBody] EditInfoHomeRequest data, [FromServices] EditInfoHome editInfoHome)
+        public async Task<ActionResult<InfoHomeResponse>> Edit([FromForm] EditInfoHomeRequest data, [FromServices] EditInfoHome editInfoHome)
         {
             try
             {
+                using Stream fileStream = data.File.OpenReadStream();
+                var fileBuffer = new byte[fileStream.Length];
+
+                using (fileStream)
+                {
+                    await fileStream.ReadAsync(fileBuffer, 0, (int)fileStream.Length);
+                }
+
                 var editInfoHomeData = new EditInfoHomeDTO()
                 {
                     Id = data.Id,
-                    Topic = data.Topic,
-                    Title = data.Title,
+                    Topic = data.Topic!,
+                    Title = data.Title!,
                     TitleLink = data.TitleLink,
-                    Link = data.Link,
-                    File = data.File,
-                    OriginalFileName = data.OriginalFileName,
-                    TypeFile = data.TypeFile,
-                    Size = data.Size,
+                    Link = data.Link!,
+                    TypeInfo = data.TypeInfo,
+                    File = fileBuffer,
+                    OriginalFileName = data.File.FileName.Split(".")[0],
+                    TypeFile = data.File.ContentType.Split("/")[1],
+                    Size = (double)fileStream.Length / (1024 * 1024),
                 };
 
                 var updatedInfoHome = await editInfoHome.Execute(editInfoHomeData);
 
-                var response = new InfoHomeResponse()
-                {
-                    Id = updatedInfoHome.Id,
-                    Topic = updatedInfoHome.Topic,
-                    Title = updatedInfoHome.Title,
-                    TitleLink = updatedInfoHome.TitleLink,
-                    Link = updatedInfoHome.Link,
-                };
-
                 _logger.LogInformation("Informações editadas com sucesso");
+                var response = new MessageResponse("Informações editadas com sucesso");
                 return Ok(response);
             }
             catch (Exception ex)

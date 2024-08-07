@@ -20,22 +20,27 @@ namespace arbovirose.Application.Usecases.InfoHome
         public async Task<InfoHomeEntity> Execute(EditInfoHomeDTO data)
         {
             var existingInfoHome = await _infoHomeRepository.GetById(data.Id);
-            if (existingInfoHome == null) throw new InvalidExistingInfoHome();
 
-            existingInfoHome.Topic = data.Topic;
-            existingInfoHome.Title = data.Title;
-            existingInfoHome.TitleLink = data.TitleLink;
-            existingInfoHome.Link = data.Link;
+            var newInfoHome = InfoHomeEntityFactory.CreateInfoHomeEntity(data);
 
-            if (data.File != null && data.TypeFile != null && data.OriginalFileName != null && data.Size != null)
+            if (data.File != null && data.TypeFile != null && data.OriginalFileName != null && data.Size != 0)
             {
-                var uploadData = InfoHomeEntityFactory.CreateUploadDTO(existingInfoHome, data);
+                var uploadData = InfoHomeEntityFactory.EditUploadDTO(data);
+                
+                var resultUpload = _uploadService.Delete(data.Id.ToString());
 
-                var resultUpload = _uploadService.Upload(uploadData);
+                resultUpload = _uploadService.Upload(uploadData);
+                
                 if (resultUpload != true) throw new InvalidUploadException();
             }
 
-            var result = await _infoHomeRepository.Update(existingInfoHome);
+            InfoHomeEntity? result = null;
+
+            if (existingInfoHome != null)
+            {
+                result = await _infoHomeRepository.Update(newInfoHome);
+            }
+
             if (result == null) throw new InvalidEditInfoHomeException();
 
             return result;

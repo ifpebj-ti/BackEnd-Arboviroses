@@ -4,13 +4,14 @@ namespace arbovirose.Domain.Dtos.InfoHome
     public class EditInfoHomeDTO
     {
         public Guid Id { get; set; }
-        public string Topic { get; set; } = null!;
-        public string Title { get; set; } = null!;
-        public string TitleLink { get; set; } = null!;
-        public string Link { get; set; } = null!;
-        public byte[]? File { get; set; }
-        public string? TypeFile { get; set; }
-        public string? OriginalFileName { get; set; }
-        public long? Size { get; set; }
+        public string? Topic { get; set; }
+        public string Title { get; set; } = "";
+        public string? TitleLink { get; set; }
+        public string Link { get; set; } = "";
+        public string TypeInfo { get; set; } = "";
+        public Byte[] File { get; set; } = new Byte[0];
+        public string TypeFile { get; set; } = "";
+        public string OriginalFileName { get; set; } = "";
+        public double Size { get; set; } = 0;
     }
 }

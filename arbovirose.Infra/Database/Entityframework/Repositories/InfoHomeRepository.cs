@@ -30,6 +30,12 @@ namespace arbovirose.Infra.Database.Entityframework.Repositories
 
         public async Task<InfoHomeEntity> Update(InfoHomeEntity data)
         {
+            var trackedEntity = await this._context.InfoHome.FindAsync(data.Id);
+            if (trackedEntity != null)
+            {
+                this._context.Entry(trackedEntity).State = EntityState.Detached;
+            }
+
             this._context.Update(data);
             await this._context.SaveChangesAsync();
             return data;
